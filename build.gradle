@@ -1,0 +1,68 @@
+buildscript {
+    repositories {
+        jcenter()
+        maven {
+            name = "forge"
+            url = "http://files.minecraftforge.net/maven"
+        }
+    }
+    dependencies {
+        classpath 'net.minecraftforge.gradle:ForgeGradle:2.2-SNAPSHOT'
+    }
+}
+
+apply plugin: 'net.minecraftforge.gradle.forge'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+version = "${ver_api}.${ver_major}.${ver_minor}.${ver_build}"
+group = "info.tritusk"
+archivesBaseName = "LaboratoriumChemiae"
+
+repositories {
+}
+
+minecraft {
+    version = "${minecraft_ver}-${minecraftfogre_ver}"
+    runDir = "run"
+
+    mappings = mapping_ver
+    
+    replace "@VERSION@", project.version
+}
+
+dependencies {
+}
+
+processResources {
+    inputs.property "version", project.version
+    inputs.property "mcversion", project.minecraft.version
+
+    from(sourceSets.main.resources.srcDirs) {
+        include 'mcmod.info'
+        expand 'version':project.version, 'mcversion':project.minecraft.version
+    }
+
+    from(sourceSets.main.resources.srcDirs) {
+        exclude 'mcmod.info'
+    }
+}
+
+//task devJar(type: Jar, dependsOn: jar) {
+//    classifier 'dev'
+//    from sourceSets.main.output
+//    from sourceSets.main.allSource
+//}
+//
+//task apiJar(type: Jar, dependsOn: jar) {
+//    classifier 'api'
+//    from sourceSets.main.output
+//    from sourceSets.main.allSource
+//    include "**/api/**"
+//}
+//
+//artifacts {
+//    archives devJar
+//    archives apiJar
+//}
