@@ -8,10 +8,12 @@ buildscript {
     }
     dependencies {
         classpath 'net.minecraftforge.gradle:ForgeGradle:2.2-SNAPSHOT'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:${kotlin_ver}"
     }
 }
 
 apply plugin: 'net.minecraftforge.gradle.forge'
+apply plugin: 'kotlin'
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
@@ -21,6 +23,10 @@ group = "info.tritusk"
 archivesBaseName = "LaboratoriumChemiae"
 
 repositories {
+    maven {
+        name "shadowfacts"
+        url "http://mvn.rx14.co.uk/shadowfacts/"
+    }
 }
 
 minecraft {
@@ -33,6 +39,10 @@ minecraft {
 }
 
 dependencies {
+    compile group: 'org.jetbrains.kotlin', name: 'kotlin-stdlib', version: "${kotlin_ver}"
+    compile group: 'org.jetbrains.kotlin', name: 'kotlin-runtime', version: "${kotlin_ver}"
+
+    runtime group: 'net.shadowfacts', name: 'Forgelin', version: "${forgelin_ver}"
 }
 
 processResources {
