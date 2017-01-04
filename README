@@ -1,11 +1,13 @@
 Laboratorium Chemiae
 ======
 
-Minecraft Mod.
+Minecraft Mod. I use "LabChm" for its abbreviation. 
 The name is Latin for "Chemistry Laboratory".
 Spiritual successor of FrogCraft and FrogCraft-Rebirth.
 
 
 No progress. Even a bit. No. Just no progress.
 
-You should go here: https://github.com/FrogCraft-Rebirth/FrogCraft-Rebirth
+For now, you should go here: https://github.com/FrogCraft-Rebirth/FrogCraft-Rebirth
+
+Ah. Do remember that LabChm is written in both Java and Kotlin, and requires Shadowfact's Forgelin as a hard dependencies. Get more info at https://github.com/shadowfacts/Forgelin
