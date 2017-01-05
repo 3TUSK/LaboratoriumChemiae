@@ -5,9 +5,18 @@ Minecraft Mod. I use "LabChm" for its abbreviation.
 The name is Latin for "Chemistry Laboratory".
 Spiritual successor of FrogCraft and FrogCraft-Rebirth.
 
+No GUI, thus a follower of Cult of Kitteh.
+Get more info at http://asie.pl/kitteh/
 
 No progress. Even a bit. No. Just no progress.
+You might be able to see some code but that is all your illusion. 
+If you really see any code, remember that they are all immature ideas.
 
 For now, you should go here: https://github.com/FrogCraft-Rebirth/FrogCraft-Rebirth
 
-Ah. Do remember that LabChm is written in both Java and Kotlin, and requires Shadowfact's Forgelin as a hard dependencies. Get more info at https://github.com/shadowfacts/Forgelin
+May contains code from FrogCraft-Rebirth of which is licensed unded MIT.
+
+Ah. Do remember that LabChm is written in both Java and Kotlin, and thus requires 
+Shadowfact's Forgelin as a hard dependencies. 
+Shadowfact's Forgelin is licensed under LGPL v3.
+Get more info at https://github.com/shadowfacts/Forgelin
