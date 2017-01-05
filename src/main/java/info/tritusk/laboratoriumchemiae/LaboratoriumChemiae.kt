@@ -13,7 +13,7 @@ const val MOD_NAME = "Laboratorium Chemiae"
 const val SERVER_PROXY = "info.tritusk.laboratoriumchemiae.ProxyChemiaeServer"
 const val CLIENT_PROXY = "info.tritusk.laboratoriumchemiae.ProxyChemiaeClient"
 
-@Mod(modid = MOD_ID, name = MOD_NAME, version = "@VERSION", useMetadata = true)
+@Mod(modid = MOD_ID, name = MOD_NAME, version = "@VERSION", useMetadata = true, modLanguage = "kotlin", modLanguageAdapter = "net.shadowfacts.forgelin.KotlinAdapter")
 object LaboratoriumChemiae {
 	
 	@SidedProxy(serverSide = SERVER_PROXY, clientSide = CLIENT_PROXY)
