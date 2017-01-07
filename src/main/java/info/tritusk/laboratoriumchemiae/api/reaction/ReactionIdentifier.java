@@ -35,6 +35,6 @@ public enum ReactionIdentifier {
 	/**
 	 * Identifier for any reaction that does not belongs to any category.
 	 */
-	INVALID;
+	UNCATEGORIZED;
 	
 }

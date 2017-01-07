@@ -1,4 +1,4 @@
-package info.tritusk.laboratoriumchemiae.reaction
+package info.tritusk.laboratoriumchemiae.library.reaction
 
 import info.tritusk.laboratoriumchemiae.api.reaction.*
 
