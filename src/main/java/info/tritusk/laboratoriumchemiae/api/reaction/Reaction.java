@@ -1,7 +1,13 @@
 package info.tritusk.laboratoriumchemiae.api.reaction;
 
+import info.tritusk.laboratoriumchemiae.api.agent.Agent;
+
 public interface Reaction {
-	
-	ReactionIdentifier getIdentity();
+
+    ReactionType getIdentity();
+    
+    Agent[] reactants();
+    
+    Agent[] products();
 
 }

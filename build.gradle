@@ -18,7 +18,7 @@ apply plugin: 'kotlin'
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
-version = "${ver_api}.${ver_major}.${ver_minor}.${ver_build}"
+version = "${ver_api}.${ver_major}.${ver_minor}"
 group = "info.tritusk"
 archivesBaseName = "LaboratoriumChemiae"
 
@@ -26,6 +26,18 @@ repositories {
     maven {
         name "shadowfacts"
         url "http://mvn.rx14.co.uk/shadowfacts/"
+    }
+    maven {
+        name "ic2, forestry, oreregistry"
+        url "http://maven.ic2.player.to/"
+    }
+    maven {
+        name "jei, slimeknights"
+        url "https://dvs1.progwml6.com/files/"
+    }
+    maven {
+        name "mcmultipart"
+        url "http://maven.amadornes.com/"
     }
 }
 
@@ -42,7 +54,15 @@ dependencies {
     compile group: 'org.jetbrains.kotlin', name: 'kotlin-stdlib', version: "${kotlin_ver}"
     compile group: 'org.jetbrains.kotlin', name: 'kotlin-runtime', version: "${kotlin_ver}"
 
+    compile group: 'oreregistry', name: 'oreregistry_1.11.2', version: "${oreregistry_ver}"
+    compile group: 'MCMultiPart2', name: 'MCMultiPart-exp', version: "${mcmp_ver}"
+
     runtime group: 'net.shadowfacts', name: 'Forgelin', version: "${forgelin_ver}"
+}
+
+sourceSets {
+    main.java.srcDirs += 'src/main/java'
+    main.kotlin.srcDirs += 'src/main/kotlin'
 }
 
 processResources {
