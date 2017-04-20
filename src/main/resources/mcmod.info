@@ -1,18 +1,19 @@
 [
-	{
-    	"modid": "laboratoriumchemiae",
-    	"name": "Project Sigma: Laboratorium Chemiae",
-    	"description": "Successor of FrogCraft, taking back the chemical industry to Minecraft world!",
-    	"version": "${version}",
-    	"mcversion": "${mcversion}",
-    	"url" : "",
-    	"updateUrl": "",
-    	"authorList": ["FrogCraftRebirth Dev. Team"],
-    	"credits": "",
-    	"logoFile": "",
-    	"screenshots": [],
-    	"parent": "",
-    	"requiredMods": [],
-    	"dependencies": []
-	}
+  {
+    "modid": "laboratoriumchemiae",
+    "name": "Project Sigma: Laboratorium Chemiae",
+    "description": "Successor of FrogCraft, taking back the chemical industry to Minecraft world!",
+    "version": "${version}",
+    "mcversion": "${mcversion}",
+    "url" : "",
+    "updateUrl": "",
+    "authorList": ["FrogCraftRebirth Dev. Team"],
+    "credits": "",
+    "logoFile": "",
+    "screenshots": [],
+    "parent": "",
+    "useDependenciesInfo": true,
+    "requiredMods": ["oreregistry", "mcmultipart"],
+    "dependencies": []
+  }
 ]
