@@ -18,15 +18,11 @@ import net.minecraftforge.fml.common.network.FMLNetworkEvent
 import net.minecraftforge.fml.common.network.NetworkRegistry
 import net.minecraftforge.fml.common.network.internal.FMLProxyPacket
 
-const val CHANNEL_NAME = "LabChm"
-
 object NetworkHandler {
+
+    const val CHANNEL_NAME = "LabChm"
     
-    private val channel: FMLEventChannel = NetworkRegistry.INSTANCE.newEventDrivenChannel(CHANNEL_NAME)
-    
-    init {
-        channel.register(this)
-    }
+    private val channel: FMLEventChannel = NetworkRegistry.INSTANCE.newEventDrivenChannel(CHANNEL_NAME).also { it.register(this) }
     
     @SubscribeEvent fun onClientPacket(packet: FMLNetworkEvent.ClientCustomPacketEvent) = resolveClientPacket(
         DataInputStream(ByteBufInputStream(packet.packet.payload())),
@@ -35,14 +31,14 @@ object NetworkHandler {
     
     @SubscribeEvent fun onServerPacket(packet: FMLNetworkEvent.ServerCustomPacketEvent) = resolveServerPacket(
         DataInputStream(ByteBufInputStream(packet.packet.payload())),
-        (packet.handler as NetHandlerPlayServer).playerEntity
+        (packet.handler as NetHandlerPlayServer).player
     )
     
     fun sendPacketToDim(pkt: PacketChemiae, dim: Int) = channel.sendToDimension(pkt.encapsulate(), dim)
     
     fun sendPacketAroundPos(pkt: PacketChemiae, dim: Int, pos: BlockPos, range: Double = 2.0) = channel.sendToAllAround(
         pkt.encapsulate(),
-        NetworkRegistry.TargetPoint(dim, pos.getX().toDouble(), pos.getY().toDouble(), pos.getZ().toDouble(), range))
+        NetworkRegistry.TargetPoint(dim, pos.x.toDouble(), pos.y.toDouble(), pos.z.toDouble(), range))
     
     fun sendPacketToPlayer(pkt: PacketChemiae, player: EntityPlayerMP) = channel.sendTo(pkt.encapsulate(), player)
     
@@ -51,17 +47,17 @@ object NetworkHandler {
     fun sendPacketToServer(pkt: PacketChemiae) = channel.sendToServer(pkt.encapsulate())
     
     private fun resolveClientPacket(stream: DataInputStream, player: EntityPlayerSP) {
-		player.activeHand
-		when (stream.readByte()) {
-			
-		}
+        player.activeHand
+        when (stream.readByte()) {
+            
+        }
     }
     
     private fun resolveServerPacket(stream: DataInputStream, player: EntityPlayerMP) {
-		player.activeHand
-		when (stream.readByte()) {
-			
-		}
+        player.activeHand
+        when (stream.readByte()) {
+            
+        }
     }
     
 }
@@ -71,13 +67,7 @@ interface PacketChemiae {
     fun readData(stream: DataInputStream, player: EntityPlayer)
 }
 
-fun PacketChemiae.encapsulate(): FMLProxyPacket {
-	val bytes: ByteArrayOutputStream = ByteArrayOutputStream()
-    val data: DataOutputStream = DataOutputStream(bytes)
-    try {
-        this.writeData(data)
-    } catch (e: Exception) {
-        e.printStackTrace()
-    }
-    return FMLProxyPacket(PacketBuffer(Unpooled.wrappedBuffer(bytes.toByteArray())), CHANNEL_NAME)
-}
+fun PacketChemiae.encapsulate(): FMLProxyPacket = FMLProxyPacket(
+        PacketBuffer(Unpooled.wrappedBuffer(ByteArrayOutputStream().also {
+            DataOutputStream(it).use { this.writeData(it) }
+        }.toByteArray())), NetworkHandler.CHANNEL_NAME)
