@@ -23,6 +23,7 @@ group = "info.tritusk"
 archivesBaseName = "LaboratoriumChemiae"
 
 repositories {
+    jcenter()
     maven {
         name "shadowfacts"
         url "http://mvn.rx14.co.uk/shadowfacts/"
@@ -53,6 +54,8 @@ minecraft {
 dependencies {
     compile group: 'org.jetbrains.kotlin', name: 'kotlin-stdlib', version: "${kotlin_ver}"
     compile group: 'org.jetbrains.kotlin', name: 'kotlin-runtime', version: "${kotlin_ver}"
+    //Co-routine.
+    compile group: 'org.jetbrains.kotlinx', name: 'kotlinx-coroutines-core', version: '0.14'
 
     compile group: 'oreregistry', name: 'oreregistry_1.11.2', version: "${oreregistry_ver}"
     compile group: 'MCMultiPart2', name: 'MCMultiPart-exp', version: "${mcmp_ver}"
