@@ -5,11 +5,11 @@ import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
 public interface ProxyChemiae {
-	
-	void pre(FMLPreInitializationEvent event);
-	
-	void pro(FMLInitializationEvent event);
-	
-	void post(FMLPostInitializationEvent event);
+
+    void pre(FMLPreInitializationEvent event);
+
+    void pro(FMLInitializationEvent event);
+
+    void post(FMLPostInitializationEvent event);
 
 }

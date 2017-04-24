@@ -1,41 +1,44 @@
 package info.tritusk.laboratoriumchemiae.api.reaction;
 
-public enum ReactionType {
+public interface ReactionType {
 
-    /**
-     * Category for separation by different density, always in a centrifuge
-     */
-    CENTRIFUGE,
+    enum Defaults implements ReactionType {
 
-    /**
-     * Category for general reaction under STP, usually in a reaction vessel
-     */
-    CHEM_REACTOR,
+        /**
+         * Category for separation by different density, always in a centrifuge
+         */
+        CENTRIFUGE,
 
-    /**
-     * Category for condensation, aka separate substance by different boiling
-     * point
-     */
-    CONDENSE_TOWER,
+        /**
+         * Category for general reaction under STP, usually in a reaction vessel
+         */
+        CHEM_REACTOR,
 
-    /**
-     * Category for electrolysis
-     */
-    ELECTROLYZER,
+        /**
+         * Category for condensation, aka separate substance by different boiling
+         * point
+         */
+        CONDENSE_TOWER,
 
-    /**
-     * Category for pyrolysis (i.e. decomposition under high temperature)
-     */
-    PYROLYZER,
+        /**
+         * Category for electrolysis
+         */
+        ELECTROLYZER,
 
-    /**
-     * Category for reaction in refrigerator
-     */
-    REFRIGERATOR,
+        /**
+         * Category for pyrolysis (i.e. decomposition under high temperature)
+         */
+        PYROLYZER,
 
-    /**
-     * Identifier for any reaction that does not belongs to any category.
-     */
-    UNCATEGORIZED;
+        /**
+         * Category for reaction in refrigerator
+         */
+        REFRIGERATOR,
 
+        /**
+         * Identifier for any reaction that does not belongs to any category.
+         */
+        UNCATEGORIZED
+
+    }
 }

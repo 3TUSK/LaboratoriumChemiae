@@ -17,7 +17,8 @@ import javax.annotation.concurrent.NotThreadSafe
 @NotThreadSafe
 data class HotSwappableResearchData(
         var wrappedResearch : Research?,
-        var wrappedReaction : Reaction?) : ResearchData, Serializable {
+        var wrappedReaction : Reaction?
+) : ResearchData, Serializable {
     constructor() : this(null, null)
 
     override fun getReaction() : Reaction = wrappedReaction ?: ReactionManager.EMPTY_REACTION
@@ -31,7 +32,7 @@ data class HotSwappableResearchData(
     private fun readObject(`in`: ObjectInputStream) {
         wrappedResearch = ResearchManager.INSTANCE.findResearch(`in`.readUTF()).get()
         //val reactionID = `in`.readUTF()
-        wrappedReaction = ReactionManager.INSTANCE.getAll(ReactionType.values()[`in`.readInt()]).findLast { true } //TODO
+        wrappedReaction = ReactionManager.INSTANCE.getAll(ReactionType.Defaults.values()[`in`.readInt()]).findLast { true } //TODO
     }
 
     private fun readObjectNoData() = Unit // Nothing happened, keep wrapped research and reaction as null

@@ -10,4 +10,6 @@ fun Agent.getItemStack(): ItemStack =
             it.hasProduct(this.form())
         }?.registeredProducts?.get(this.form()) ?: ItemStack.EMPTY
 
-fun create(resource: String, type: String, size: Int = 1): Agent = AgentImpl(resource, type, size)
+fun of(resource: String, type: String, size: Int = 1): Agent = AgentImpl(resource, type, size)
+
+fun of(): Agent = AgentEmpty

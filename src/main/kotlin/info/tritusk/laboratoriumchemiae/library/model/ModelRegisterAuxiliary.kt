@@ -1,3 +1,4 @@
+@file:JvmName("ModelUtils")
 package info.tritusk.laboratoriumchemiae.library.model
 
 import net.minecraft.block.Block
@@ -10,12 +11,14 @@ import net.minecraftforge.client.model.ModelLoader
 import net.minecraftforge.fluids.BlockFluidBase
 
 fun registerModel(item: Item,
-					meta: Int = 0,
-					model: String = Item.REGISTRY.getNameForObject(item).toString()) = registerModel0(item, meta, model)
+                  meta: Int = 0,
+                  model: String = Item.REGISTRY.getNameForObject(item).toString()
+) = registerModel0(item, meta, model)
 	
 fun regsiterModel(block: Block,
-				meta: Int = 0,
-				model: String = Block.REGISTRY.getNameForObject(block).toString()) = registerModel0(Item.getItemFromBlock(block), meta, model)
+                  meta: Int = 0,
+                  model: String = Block.REGISTRY.getNameForObject(block).toString()
+) = registerModel0(Item.getItemFromBlock(block), meta, model)
 
 fun registerModelFluid(fluidBlock: BlockFluidBase, name: String) {
 	val modelLocation = ModelResourceLocation(":fluid", name)

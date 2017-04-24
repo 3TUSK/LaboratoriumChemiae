@@ -67,7 +67,7 @@ interface PacketChemiae {
     fun readData(stream: DataInputStream, player: EntityPlayer)
 }
 
-fun PacketChemiae.encapsulate(): FMLProxyPacket = FMLProxyPacket(
+internal fun PacketChemiae.encapsulate(): FMLProxyPacket = FMLProxyPacket(
         PacketBuffer(Unpooled.wrappedBuffer(ByteArrayOutputStream().also {
             DataOutputStream(it).use { this.writeData(it) }
         }.toByteArray())), NetworkHandler.CHANNEL_NAME)

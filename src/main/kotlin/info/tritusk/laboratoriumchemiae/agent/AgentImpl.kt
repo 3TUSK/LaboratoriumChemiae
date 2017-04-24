@@ -8,7 +8,9 @@ internal data class AgentImpl(val resource: String, val form: String, var qty: I
 
     override fun form() = form
 
-    override fun size() = qty
+    override fun getSize() = qty
+
+    override fun setSize(newSize: Int) { qty = newSize }
 
     override fun equals(other: Any?) = when(other) {
         is Agent -> other.type() == this.resource && other.form() == this.form

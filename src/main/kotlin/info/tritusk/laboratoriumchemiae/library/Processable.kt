@@ -12,7 +12,7 @@ import kotlinx.coroutines.experimental.launch
 import net.minecraft.tileentity.TileEntity
 import net.minecraft.util.ITickable
 
-abstract class Processible<out R : ReactionType> : TileEntity(), ITickable {
+abstract class Processable : TileEntity(), ITickable {
 
     protected val inputs : MutableSet<AgentInput<*>> = mutableSetOf()
     protected val outputs : MutableSet<AgentOutput<*>> = mutableSetOf()
@@ -20,7 +20,7 @@ abstract class Processible<out R : ReactionType> : TileEntity(), ITickable {
 
     protected var status = WorkStatus.IDLE
     private var tickCounter = 0
-    protected var reactionStartSignal = false
+    protected var isReadyToStartReaction = false
 
     override fun update() = if (tickCounter++ == 20 && !world.isRemote) updateServer() else updateClient()
 
@@ -28,7 +28,7 @@ abstract class Processible<out R : ReactionType> : TileEntity(), ITickable {
         val currData = data //Thread-safe, if I read it right.
         if (currData != null && currData.currentResearch() != ResearchManager.EMPTY_RESEARCH) {
             //TODO ONLY DO REACTION WHEN WE HAVE RECIPE DATA
-            if (reactionStartSignal) {
+            if (isReadyToStartReaction) {
                 val reactionProcess = launch(CommonPool) {
                     reactionStart(
                             data?.currentResearch() ?: ResearchManager.EMPTY_RESEARCH,

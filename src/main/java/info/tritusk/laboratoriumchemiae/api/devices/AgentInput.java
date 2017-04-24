@@ -1,11 +1,10 @@
 package info.tritusk.laboratoriumchemiae.api.devices;
 
 import info.tritusk.laboratoriumchemiae.api.agent.Agent;
-import kotlin.Triple;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-import java.util.Collection;
+import javax.vecmath.Point3i;
 
 public interface AgentInput<T> {
 
@@ -19,7 +18,11 @@ public interface AgentInput<T> {
      * Consume the given collection of agents.
      * @param agents Array of agents to be consumed.
      */
+    @Deprecated
     void consume(@Nonnull Agent... agents);
+
+    @Nonnull
+    Agent getContainedAgent();
 
     /**
      * Accept the given type of input and store in {@linkplain Agent agent} form.
@@ -32,10 +35,15 @@ public interface AgentInput<T> {
     T accept(@Nonnull T input);
 
     /**
-     * @return An integer array with size of 3, consisted of x, y, z coordinates;
-     * or empty array for unimplemented.
+     * @return true if this AgentInput instance contains no agent.
+     */
+    boolean isEmpty();
+
+    /**
+     * @return Its position vector (i.e. the point, with the (0,0,0) as origin)
+     * Return (0,0,0) for unimplemented.
      */
     @Nonnull
-    int[] pos();
+    Point3i pos();
 
 }

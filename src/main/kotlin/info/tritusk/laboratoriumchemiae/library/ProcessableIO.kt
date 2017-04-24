@@ -9,6 +9,7 @@ import net.minecraftforge.fluids.FluidStack
 import net.minecraftforge.fluids.FluidTankInfo
 import net.minecraftforge.fluids.IFluidTank
 import net.minecraftforge.items.IItemHandler
+import javax.vecmath.Point3i
 
 abstract class AbstractTileInputItem : TileEntity(), AgentInput<ItemStack> {
     override fun getType() = ItemStack::class.java
@@ -17,7 +18,7 @@ abstract class AbstractTileInputItem : TileEntity(), AgentInput<ItemStack> {
 
     override abstract fun accept(input: ItemStack): ItemStack?
 
-    override fun pos() = intArrayOf(getPos().x, getPos().y, getPos().z)
+    override fun pos() = pos.let { Point3i(it.x, it.y, it.z) }
 }
 
 class AbstractTileOutputItem {}

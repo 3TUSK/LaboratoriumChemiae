@@ -37,6 +37,11 @@ public interface Agent {
      * @return The size of this agent. Cannot be less than zero.
      */
     @Nonnegative
-    int size();
+    int getSize();
 
+    /**
+     * Set the size of this agent
+     * @param newSize New size of this agent
+     */
+    void setSize(int newSize);
 }

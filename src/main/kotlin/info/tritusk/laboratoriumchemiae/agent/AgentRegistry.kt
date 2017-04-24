@@ -6,11 +6,11 @@ import net.minecraft.item.ItemStack
 import oreregistry.api.OreRegistryApi
 
 object AgentRegistry {
-	private val productToMilliBucketMapping: TObjectIntMap<String> = TObjectIntHashMap()
+	private val mapping: TObjectIntMap<String> = TObjectIntHashMap()
 	
 	fun getProductMol(stack: ItemStack) = getProductMol(OreRegistryApi.info.getProductInfo(stack)?.productType)
 	
-	fun getProductMol(type: String?) = productToMilliBucketMapping[type]
+	fun getProductMol(type: String?) = mapping[type]
 	
-	fun setProductMolNum(type: String, mB: Int) = productToMilliBucketMapping.put(type, mB)
+	fun setProductMolNum(type: String, mB: Int) = mapping.put(type, mB)
 }
